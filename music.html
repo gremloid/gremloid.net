@@ -19,6 +19,10 @@
                 font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
             }
 
+            p {
+                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
+            }
+
             li {
                 float: left;
             }
@@ -39,6 +43,63 @@
                 background-color: #f5f5dd;
                 color: black;
             }
+
+            img {
+                border-radius: 50%;
+            }
+
+            .center {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 20%;
+            }
+
+            .image-container {
+                position: relative;
+                width: 20%;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            #myImg {
+                display: block;
+                width: 100%;
+                border-radius: 50%;
+            }
+
+            button {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: #8b72be;
+                color: white;
+                border: none;
+                width: 70px;  /* Set a fixed square width */
+                height: 70px; /* Set the same height to make it square */
+                cursor: pointer;
+                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
+                font-size: 16px;
+                font-weight: normal;
+                border-radius: 5px; /* Optional: Add some border rounding */
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            button:hover {
+                background-color: #b7a9d4;
+            }
+
+            #previous {
+                left: -80px; /* Push it outside the image */
+            }
+
+            #next {
+                right: -80px;
+            }
+
+
         </style>
     </head>
 
@@ -49,14 +110,48 @@
             <li><a class="active" href="#music">Music</a></li>
             <li><a href="#editing">Editing</a></li>
             <li><a href="#contact">Contact</a></li>
-          </ul>
-        <div style="display: flex">
-            <h1 align="left" style="flex: 1"> lighttube logcabin</h1>
-            <iframe align="right" style="flex: 1" src="https://open.spotify.com/embed/artist/3D95t7O5af6HWw2ZdbaoYw?utm_source=generator" width="50%" height="302" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </ul>
+
+        <br></br>
+
+        <div class="image-container">
+            <button id="previous" class="float-left">Previous</button>
+            <img class="center" id="myImg" src="img/lighttube.jpg" alt="lighttube">
+            <button id="next" class="float-right">Next</button>
         </div>
-        <div style="display: flex">
-            <h1 align="left" style="flex: 1">Mia Antifa</h1>
-            <iframe align="right" style="flex: 1" src="https://open.spotify.com/embed/artist/6l7Sz7tuVOWP2108dKbE3C?utm_source=generator" width="50%" height="302" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
+
+        <h1 id="band-name" align="center">lighttube logcabin</h1>
+
+        <p id="instrument" align="center">Bass</p>
+
+        <script>
+            const images = ['lighttube.jpg', 'mia-antifa.jpg', 'grs.jpg'];
+            const names = ['lighttube logcabin', 'Mia Antifa', 'Gay Rat Society']
+            const instruments = ['Bass', 'Trumpet/Guitar', 'Everything']
+            const nextButton = document.getElementById('next');
+            const previousButton = document.getElementById('previous');
+            const image = document.getElementById('myImg');
+            const name = document.getElementById('band-name');
+            const instrumentPlayed = document.getElementById('instrument');
+            let i = 0;
+            nextButton.addEventListener('click', () => {
+                i++;
+                if (i >= images.length) {
+                    i = 0;
+                }
+                image.src='img/' + images[i];
+                name.innerHTML = names[i];
+                instrumentPlayed.innerHTML = instruments[i];
+            });
+            previousButton.addEventListener('click', () => {
+                i--;
+                if (i < 0) {
+                    i = images.length - 1;
+                }
+                image.src='img/' + images[i];
+                name.innerHTML = names[i];
+                instrumentPlayed.innerHTML = instrument[i];
+            });
+        </script>
     </body>
 </html>
