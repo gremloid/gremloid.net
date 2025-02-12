@@ -35,6 +35,37 @@
                 background-color: #f5f5dd;
                 color: black;
             }
+
+            a {
+                text-decoration: none;
+                color: #8b72be;
+            }
+
+            .projects-container {
+                display: flex;
+                justify-content: center; /* Centers the entire projects div */
+                width: 100%;
+                text-align: center;
+                margin: 20px 0;
+            }
+
+            .projects {
+                display: flex;
+                align-items: center;
+                position: relative;
+            }
+
+            .projects img {
+                position: absolute;
+                left: -5px;
+                transform: translateX(-100%);
+            }
+
+            .projects-container:hover {
+                transform:scale(1.1);
+            }
+
+
         </style>
     </head>
     <body>
@@ -46,6 +77,11 @@
             <li><a href="contact.html">Contact</a></li>
 
         </ul>
-        <a href="bloodyUnicorn\index.html">Bloody Unicorn</a>
+        <div class="projects-container">
+            <div class="projects">
+                <img src="icon/bloodyUnicorn.png" style="width:35%">
+                <h1><a href="bloodyUnicorn/index.html">Bloody Unicorn</a></h1>
+            </div>
+        </div>   
     </body>
 </html>
