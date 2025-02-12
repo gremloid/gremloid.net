@@ -5,6 +5,7 @@
         <style>
             body {
                 background-color: #d2c4af;
+                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
             }
             ul {
                 list-style-type: none;
@@ -12,7 +13,6 @@
                 padding: 0;
                 overflow: hidden;
                 background-color: #8b72be;
-                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
             }
 
             li {
@@ -35,16 +35,61 @@
                 background-color: #f5f5dd;
                 color: black;
             }
+
+            img {
+                border-radius: 50%;
+            }
+
+            .image-container {
+                display: flex;
+            }
+
+            .float-left {
+                float: left;
+                margin-right: 20px; /* Adds spacing between the image and text */
+            }
+
+            .float-right {
+                float: left; /* Change from right to left to stay beside the image */
+                margin-top: 20px; /* Adjust as needed to align the header */
+            }
+
+            .text-content {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .text-content h1 {
+                margin-bottom: 5px; /* Reduces space between h1 and p */
+            }
+
+            .text-content p {
+                margin-top: 5px; /* Reduces space between h1 and p */
+                line-height: 1.2; /* Adjusts line spacing inside the paragraph */
+                margin-bottom: 0px
+            }
+
+
         </style>
     </head>
 
     <body>
         <ul>
             <li><a class="active" href="#">Home</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="projects.html">Projects</a></li>
             <li><a href="music.html">Music</a></li>
-            <li><a href="#editing">Editing</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+            <li><a href="editing.html">Editing</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <br>
+        <div class="image-container">
+            <img src="img/me.JPG" style="width:25%;" class="float-left">
+            <div class="text-content">
+                <h1 class="float-right">Avery Johnson</h1>
+                <p>Computer Science student and musician from Las Cruces, New Mexico</p>
+                <p>Fluent in languages such as C, C++, Python, and Java</p>
+            </div>
+        </div>
     </body>
 </html>
