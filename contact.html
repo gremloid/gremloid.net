@@ -6,13 +6,16 @@
             body {
                 background-color: #d2c4af;
                 font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
+                margin: 0;
+                height: 100vh; /* Ensure full height */
             }
             ul {
                 list-style-type: none;
-                margin: 0;
+                margin: 8px 8px 8px; /* Maintain slight offset effect */
                 padding: 0;
                 overflow: hidden;
                 background-color: #8b72be;
+                position: relative;
             }
 
             li {
@@ -24,7 +27,7 @@
                 color: white;
                 text-align: center;
                 padding: 14px 16px;
-                text-decoration: none
+                text-decoration: none;
             }
 
             li a:hover {
@@ -34,6 +37,43 @@
             .active {
                 background-color: #f5f5dd;
                 color: black;
+            }
+
+            /* New styles for centering input field without affecting navbar */
+            .input-container {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            input {
+                padding: 10px;
+                font-size: 16px;
+                border: 1px solid #8b72be;
+                border-radius: 10px;
+                width: 300px;
+            }
+
+            ::placeholder {
+                color: #b7a9d4;
+                text-align: right;
+                font-size: 14px;
+            }
+
+            .icon-container {
+                display: flex;
+                align-self: center;
+                justify-content: space-evenly;
+                width: 90%;
+                margin-top: 10px;
+                margin-left: 20px;
+                margin-right: 5px;
+            }
+
+            .icon-container img{
+                width: 32px;
+                height: 32px;
             }
         </style>
     </head>
@@ -45,5 +85,25 @@
             <li><a href="editing.html">Editing</a></li>
             <li><a class="active" href="#">Contact</a></li>
         </ul>
+
+        <!-- Centered input field without disrupting the navbar -->
+        <div class="input-container">
+            <input readonly type="text" onclick="mailTo()" name="email" id="email" placeholder="contact@gremloid.net">
+
+            <div class="icon-container">
+                <img id='github' src="icon/github.png" onclick="redirect('https://github.com/gremloid')">
+                <img id='instagram' src="icon/instagram.png" onclick="redirect('https://www.instagram.com/javery993/')">
+                <img id='linkedin' src="icon/linkedin.png" onclick="redirect('https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin')">
+            </div>
+        </div>
+        <script>
+            function mailTo() {
+                window.location.href = "mailto:contact@gremloid.net"
+            }
+
+            function redirect(link) {
+                window.location.href = link;
+            }
+        </script>
     </body>
 </html>
