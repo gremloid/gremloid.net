@@ -3,6 +3,7 @@
     <head>
         <title>Projects</title>
         <style>
+            /* CSS for the navigation bar */
             body {
                 background-color: #d2c4af;
                 font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
@@ -35,15 +36,18 @@
                 background-color: #f5f5dd;
                 color: black;
             }
+            /* End of navigation bar CSS */
 
+            /* CSS to change link text decorations */
             a {
                 text-decoration: none;
                 color: #8b72be;
             }
 
+            /* CSS to center only the text of the webpage and position the image to the left (This was really annoying) */
             .projects-container {
                 display: flex;
-                justify-content: center; /* Centers the entire projects div */
+                justify-content: center;
                 width: 100%;
                 text-align: center;
                 margin: 20px 0;
@@ -60,7 +64,9 @@
                 left: -5px;
                 transform: translateX(-100%);
             }
+            /* End of project CSS */
 
+            /* CSS to increase the size of the project that's being hovered over */
             .projects-container:hover {
                 transform:scale(1.1);
             }
@@ -69,14 +75,16 @@
         </style>
     </head>
     <body>
+        <!-- Navigation bar CSS -->
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a class="active" href="#"">Projects</a></li>
             <li><a href="music.html">Music</a></li>
             <li><a href="editing.html">Editing</a></li>
             <li><a href="contact.html">Contact</a></li>
-
         </ul>
+
+        <!-- HTML to display Bloody Unicorn-->
         <div class="projects-container">
             <div class="projects">
                 <img src="icon/bloodyUnicorn.png" style="width:35%">

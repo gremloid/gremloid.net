@@ -3,6 +3,7 @@
     <head>
         <title>Music</title>
         <style>
+            /* CSS for the navigation bar */
             body {
                 background-color: #d2c4af;
             }
@@ -43,11 +44,14 @@
                 background-color: #f5f5dd;
                 color: black;
             }
+            /* End of navigation bar CSS */
 
+            /* CSS to make images circular */
             img {
                 border-radius: 50%;
             }
 
+            /* CSS to center and handle placement of the image */
             .center {
                 display: block;
                 margin-left: auto;
@@ -67,7 +71,9 @@
                 width: 100%;
                 border-radius: 50%;
             }
+            /* End of image CSS */
 
+            /* CSS that makes the buttons square and positioned to the left and right of the images */
             button {
                 position: absolute;
                 top: 50%;
@@ -92,13 +98,15 @@
             }
 
             #previous {
-                left: -80px; /* Push it outside the image */
+                left: -80px;
             }
 
             #next {
                 right: -80px;
             }
+            /* End of button CSS */
 
+            /* CSS to help with placement of the Spotify embed (courtesy of ChatGPT) */
             .bio-spotify-container {
                 display: flex;
                 justify-content: space-between; /* Ensures they are evenly spaced */
@@ -107,6 +115,7 @@
                 margin: 20px auto; /* Centers the container */
             }
 
+            /* CSS to help with the placement of text at the botton (also courtesy of ChatGPT) */
             .half {
                 width: 48%; /* Ensures both sections take up equal space */
                 font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
@@ -116,6 +125,7 @@
     </head>
 
     <body>
+        <!-- Navigation Bar HTML -->
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html">Projects</a></li>
@@ -126,16 +136,18 @@
 
         <br></br>
 
+        <!-- HTML to handle the buttons and the image in the center -->
         <div class="image-container">
             <button id="previous" class="float-left">Previous</button>
             <img class="center" id="myImg" src="img/lighttube.jpg" alt="lighttube">
             <button id="next" class="float-right">Next</button>
         </div>
 
+        <!-- HTML for band name and instrument played -->
         <h1 id="band-name" align="center">lighttube logcabin</h1>
-
         <p id="instrument" align="center">Bass</p>
 
+        <!-- HTML for the creation of the bios and the spotify embeds-->
         <div class="bio-spotify-container">
             <div class="half" id="bio">
                 A DIY emo band from Las Cruces, New Mexico featuring Julian Castañeda on vocals and guitar, 
@@ -149,7 +161,9 @@
             </div>
         </div>
         
-
+        <!-- Really gross script that makes almost every part of the page dynamic: the image, the bio, and the spotify embed.-->
+        <!-- I know that JavaScript wasn't part of the assignment, but I really wanted to pull off the look of this page specifically and couldn't without using JavaScript. I was going to have to do it anyway. -->
+        <!-- If I were to do it differently, I would create an UpdateContent() function instead of copying the same code twice. -->
         <script>
             const images = ['lighttube.jpg', 'mia-antifa.jpg', 'grs.jpg'];
             const names = ['lighttube logcabin', 'Mia Antifa', 'Gay Rat Society']

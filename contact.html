@@ -3,6 +3,7 @@
     <head>
         <title>Contact</title>
         <style>
+            /* CSS To make the navigation bar look pretty - courtisy of W3 Schools */
             body {
                 background-color: #d2c4af;
                 font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
@@ -38,8 +39,9 @@
                 background-color: #f5f5dd;
                 color: black;
             }
+            /* End of navigation bar CSS */
 
-            /* New styles for centering input field without affecting navbar */
+            /* CSS to position the input box in the middle of the screen */
             .input-container {
                 position: absolute;
                 top: 50%;
@@ -54,13 +56,17 @@
                 border-radius: 10px;
                 width: 300px;
             }
+            /* End of CSS to position the input box in the middle of the screen */
 
+            /* CSS to edit the place holder text within the search box */
             ::placeholder {
                 color: #b7a9d4;
                 text-align: right;
                 font-size: 14px;
             }
+            /* End of placeholder CSS */
 
+            /* CSS to format the icons underneath the input box */
             .icon-container {
                 display: flex;
                 align-self: center;
@@ -80,9 +86,11 @@
                 cursor: pointer;
                 color: #b7a9d4;
             }
+            /* End of icon CSS */
         </style>
     </head>
     <body>
+        <!-- HTML for the navigation bar -->
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="projects.html">Projects</a></li>
@@ -91,16 +99,19 @@
             <li><a class="active" href="#">Contact</a></li>
         </ul>
 
-        <!-- Centered input field without disrupting the navbar -->
         <div class="input-container">
+            <!-- HTML to create the input box that when clicked uses mailto to send an email -->
             <input readonly type="text" onclick="mailTo()" name="email" id="email" placeholder="contact@gremloid.net">
 
+            <!-- HTML to place the icons underneath the input box -->
             <div class="icon-container">
                 <img id='github' src="icon/github.png" onclick="redirect('https://github.com/gremloid')">
                 <img id='instagram' src="icon/instagram.png" onclick="redirect('https://www.instagram.com/javery993/')">
                 <img id='linkedin' src="icon/linkedin.png" onclick="redirect('https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin')">
             </div>
         </div>
+
+        <!-- Short script to open the mailto from the input box and redirect the page to the social media links underneath the input box -->
         <script>
             function mailTo() {
                 window.location.href = "mailto:contact@gremloid.net"
