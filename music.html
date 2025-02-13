@@ -3,9 +3,9 @@
     <head>
         <title>Music</title>
         <style>
-            /* CSS for the navigation bar */
             body {
                 background-color: #d2c4af;
+                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
             }
             ul {
                 list-style-type: none;
@@ -13,19 +13,28 @@
                 padding: 0;
                 overflow: hidden;
                 background-color: #8b72be;
-                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
-            }
-
-            h1 {
-                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
-            }
-
-            p {
-                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
+                display: flex;
+                align-items: center;
+                justify-content: space-between; /* Ensures spacing between left items and right lightbulb */
+                padding-right: 16px; /* Matches the padding for alignment */
             }
 
             li {
-                float: left;
+                float: none; /* Remove float */
+            }
+
+            .nav-links {
+                display: flex; /* Ensures items stay in a row */
+            }
+
+            .light {
+                margin-left: auto; /* Pushes the lightbulb to the right */
+            }
+
+            .light img {
+                width: 24px;
+                height: auto;
+                cursor: pointer;
             }
 
             li a {
@@ -44,7 +53,35 @@
                 background-color: #f5f5dd;
                 color: black;
             }
+
+            .light:hover {
+                cursor: pointer;
+            }
             /* End of navigation bar CSS */
+
+            /* Dark Mode CSS */
+            .dark-mode {
+                background-color: #1e104f;
+                color: white;
+            }
+
+            .dark-mode ul {
+                background-color: #7f6759;
+            }
+
+            .dark-mode li a {
+                color: black;
+            }
+
+            .dark-mode .active {
+                background-color: #493e63;
+                color: white;
+            }
+
+            .dark-mode li a:hover {
+                background-color: #48562b;
+            }
+            /* End Dark Mode CSS */
 
             /* CSS to make images circular */
             img {
@@ -120,19 +157,72 @@
                 width: 48%; /* Ensures both sections take up equal space */
                 font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
             }
-
         </style>
     </head>
 
     <body>
-        <!-- Navigation Bar HTML -->
+        <!-- Navigation bar HTML -->
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a class="active" href="#">Music</a></li>
-            <li><a href="editing.html">Editing</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <div class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a class="active" href="#">Music</a></li>
+                <li><a href="editing.html">Editing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </div>
+            <li class="light"><img src="icon/lightbulb-on.png" id="bulb"></li>
         </ul>
+
+        <!-- Script for enabling and disabling dark mode -->
+        <script>
+            var lightbulb = document.getElementById("bulb");
+        
+            // Function to update the lightbulb icon
+            function updateLightbulbIcon(isDarkMode) {
+                lightbulb.src = isDarkMode ? "icon/lightbulb-off.png" : "icon/lightbulb-on.png";
+            }
+        
+            // Function to toggle dark mode
+            function toggleDarkMode() {
+                var isDarkMode = localStorage.getItem("dark-theme") === "true";
+        
+                // Toggle dark mode class
+                if (isDarkMode) {
+                    document.body.classList.remove("dark-mode");
+                    localStorage.setItem("dark-theme", "false");
+                } else {
+                    document.body.classList.add("dark-mode");
+                    localStorage.setItem("dark-theme", "true");
+                }
+        
+                // Update the lightbulb icon based on the new mode
+                updateLightbulbIcon(!isDarkMode);
+            }
+        
+            // Apply dark mode on page load
+            window.onload = function () {
+                var isDarkMode = localStorage.getItem("dark-theme") === "true";
+                if (isDarkMode) {
+                    document.body.classList.add("dark-mode");
+                }
+                updateLightbulbIcon(isDarkMode);
+            };
+        
+            // Hover effect: Show what the lightbulb *will be* if clicked
+            lightbulb.addEventListener("mouseover", function () {
+                var isDarkMode = localStorage.getItem("dark-theme") === "true";
+                updateLightbulbIcon(!isDarkMode); // Show opposite state
+            });
+        
+            // Revert back to actual mode only if the image was not clicked
+            lightbulb.addEventListener("mouseout", function () {
+                var isDarkMode = localStorage.getItem("dark-theme") === "true";
+                updateLightbulbIcon(isDarkMode); // Restore original state
+            });
+        
+            // Click event listener to toggle dark mode
+            lightbulb.addEventListener("click", toggleDarkMode);
+        </script>
 
         <br></br>
 
