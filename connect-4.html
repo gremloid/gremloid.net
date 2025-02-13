@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Projects</title>
+        <Title>Connect 4</Title>
         <style>
             /* CSS for the navigation bar */
             body {
                 background-color: #d2c4af;
                 font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
             }
+
+            .link {
+                color: #8b72be;
+                font-size: 20px;
+                margin-left: 10px;
+            }
+
             ul {
                 list-style-type: none;
                 margin: 0;
@@ -83,80 +90,32 @@
                 background-color: #48562b;
             }
 
-            .dark-mode .projects a {
-                text-decoration: none;
+            .dark-mode ::placeholder {
                 color: #7f6759;
-                font-weight: bold;
-                display: block;
+            }
+
+            .dark-mode input {
+                padding: 10px;
+                font-size: 16px;
+                border: 5px solid #7f6759;
+                border-radius: 10px;
+                width: 300px;
+            }
+
+            .dark-mode .link {
+                color: #7f6759;
+                font-size: 20px;
+                margin-left: 10px;
             }
             /* End Dark Mode CSS */
-
-            /* CSS to change link text decorations */
-            a {
-                text-decoration: none;
-                color: #8b72be;
-            }
-
-            /* CSS to center only the text of the webpage and position the image to the left (This was really annoying) */
-            .projects-container {
-                display: flex;
-                flex-direction: column; /* Stack items vertically */
-                align-items: center; /* Keep everything aligned */
-                width: 100%;
-                margin: 20px 0;
-            }
-
-            .projects {
-                display: flex;
-                align-items: center; /* Align image and text in a row */
-                gap: 0px; /* Space between image and text */
-                padding: 10px;
-                transition: transform 0.3s ease-in-out;
-                width: 250px; /* Set a reasonable width */
-            }
-
-            .projects:hover {
-                transform: scale(1.1);
-            }
-
-            /* Ensure images are placed to the left */
-            .projects img {
-                width: 60px; /* Adjust image size */
-                height: auto;
-                flex-shrink: 0; /* Prevent images from resizing */
-            }
-
-            /* Center only the text */
-            .projects h1 {
-                font-size: 18px;
-                text-align: center;
-                flex-grow: 1; /* Makes sure the text takes up space */
-                margin: 0;
-            }
-
-            .projects a {
-                text-decoration: none;
-                color: #8b72be;
-                font-weight: bold;
-                display: block;
-            }
-
-            /* End of project CSS */
-
-            .project-list li{
-                margin-top: 10px;
-            }
-
-
         </style>
     </head>
+
     <body>
-        <!-- Navigation bar CSS -->
-        <!-- Navigation bar HTML -->
         <ul>
             <div class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="#">Projects</a></li>
+                <li><a class="active" href="projects.html">Projects</a></li>
                 <li><a href="music.html">Music</a></li>
                 <li><a href="editing.html">Editing</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -164,22 +123,14 @@
             <li class="light"><img src="icon/lightbulb-on.png" id="bulb"></li>
         </ul>
 
-        <!-- HTML to display Bloody Unicorn-->
-        <div class="projects-container">
-            <div class="projects">
-                <img src="icon/bloodyUnicorn.png">
-                <h1><a href="bloodyUnicorn/index.html">Bloody Unicorn</a></h1>
-            </div>
-            <div class="projects">
-                <img id="connect" src="icon/connect-4.png">
-                <h1><a href="connect-4.html">Connect 4</a></h1>
-            </div>
+        <br>
+        <div>
+            <a class="link" href="projects.html">Back</a>
         </div>
 
         <!-- Script for enabling and disabling dark mode -->
         <script>
             var lightbulb = document.getElementById("bulb");
-            var connect4 = document.getElementById("connect");
         
             // Function to update the lightbulb icon
             function updateLightbulbIcon(isDarkMode) {
@@ -194,11 +145,9 @@
                 if (isDarkMode) {
                     document.body.classList.remove("dark-mode");
                     localStorage.setItem("dark-theme", "false");
-                    connect4.src = 'icon/connect-4.png';
                 } else {
                     document.body.classList.add("dark-mode");
                     localStorage.setItem("dark-theme", "true");
-                    connect4.src = 'icon/connect-4-dark.png';
                 }
         
                 // Update the lightbulb icon based on the new mode
@@ -210,7 +159,6 @@
                 var isDarkMode = localStorage.getItem("dark-theme") === "true";
                 if (isDarkMode) {
                     document.body.classList.add("dark-mode");
-                    connect4.src = 'icon/connect-4-dark.png';
                 }
                 updateLightbulbIcon(isDarkMode);
             };
@@ -230,6 +178,5 @@
             // Click event listener to toggle dark mode
             lightbulb.addEventListener("click", toggleDarkMode);
         </script>
-
     </body>
 </html>
