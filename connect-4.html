@@ -13,6 +13,7 @@
                 color: #8b72be;
                 font-size: 20px;
                 margin-left: 10px;
+                font-weight: bold;
             }
 
             ul {
@@ -108,6 +109,21 @@
                 margin-left: 10px;
             }
             /* End Dark Mode CSS */
+
+            .connect-4 {
+                display: flex;
+                justify-content: center;
+            }
+
+            .connect-4 img{
+                margin-left: 5px;
+                margin-right: 5px;
+                width: 5%;
+            }
+
+            .connect-4 img:hover {
+                cursor: pointer;
+            }
         </style>
     </head>
 
@@ -122,16 +138,28 @@
             </div>
             <li class="light"><img src="icon/lightbulb-on.png" id="bulb"></li>
         </ul>
-
+        
         <br>
         <div>
             <a class="link" href="projects.html">Back</a>
+        </div>
+        
+        <div class="connect-4">
+            <img id="c1" src="icon/connect-4-board.png">
+            <img id="c2" src="icon/connect-4-board.png">
+            <img id="c3" src="icon/connect-4-board.png">
+            <img id="c4" src="icon/connect-4-board.png">
+            <img id="c5" src="icon/connect-4-board.png">
+            <img id="c6" src="icon/connect-4-board.png">
+            <img id="c7" src="icon/connect-4-board.png">
         </div>
 
         <!-- Script for enabling and disabling dark mode -->
         <script>
             var lightbulb = document.getElementById("bulb");
-        
+            var gameBoard = [document.getElementById("r1"), document.getElementById("r1"), document.getElementById("r2"), document.getElementById("r3"), document.getElementById("r4"), document.getElementById("r5"), document.getElementById("r6"), document.getElementById("r7"),];
+            
+            
             // Function to update the lightbulb icon
             function updateLightbulbIcon(isDarkMode) {
                 lightbulb.src = isDarkMode ? "icon/lightbulb-off.png" : "icon/lightbulb-on.png";
@@ -145,9 +173,15 @@
                 if (isDarkMode) {
                     document.body.classList.remove("dark-mode");
                     localStorage.setItem("dark-theme", "false");
+                    for(let i = 0; i < gameBoard.length; i++) {
+                        gameBoard[i].src = "icon/connect-4-board.png";
+                    }
                 } else {
                     document.body.classList.add("dark-mode");
                     localStorage.setItem("dark-theme", "true");
+                    for(let i = 0; i < gameBoard.length; i++) {
+                        gameBoard[i].src = "icon/connect-4-board-dark.png";
+                    }
                 }
         
                 // Update the lightbulb icon based on the new mode
@@ -156,9 +190,12 @@
         
             // Apply dark mode on page load
             window.onload = function () {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
+                const isDarkMode = localStorage.getItem("dark-theme") === "true";
                 if (isDarkMode) {
                     document.body.classList.add("dark-mode");
+                    for(let i = 0; i < gameBoard.length; i++) {
+                        gameBoard[i].src = "icon/connect-4-board-dark.png";
+                    }
                 }
                 updateLightbulbIcon(isDarkMode);
             };
@@ -178,5 +215,8 @@
             // Click event listener to toggle dark mode
             lightbulb.addEventListener("click", toggleDarkMode);
         </script>
+
+        <br>
+
     </body>
 </html>
