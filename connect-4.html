@@ -157,7 +157,7 @@
         <!-- Script for enabling and disabling dark mode -->
         <script>
             var lightbulb = document.getElementById("bulb");
-            var gameBoard = [document.getElementById("r1"), document.getElementById("r1"), document.getElementById("r2"), document.getElementById("r3"), document.getElementById("r4"), document.getElementById("r5"), document.getElementById("r6"), document.getElementById("r7"),];
+            var gameBoard = [document.getElementById("c1"), document.getElementById("c2"), document.getElementById("c3"), document.getElementById("c4"), document.getElementById("c5"), document.getElementById("c6"), document.getElementById("c7")];
             
             
             // Function to update the lightbulb icon
@@ -215,6 +215,91 @@
             // Click event listener to toggle dark mode
             lightbulb.addEventListener("click", toggleDarkMode);
         </script>
+
+        <script>
+            const ROWS = 6;
+            const COLS = 7;
+            let board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
+            let currentPlayer = "player1";
+
+            // Get all column images
+            let gameBoard = [
+                document.getElementById("c1"), document.getElementById("c2"), document.getElementById("c3"),
+                document.getElementById("c4"), document.getElementById("c5"), document.getElementById("c6"),
+                document.getElementById("c7")
+            ];
+
+            // Create a container to hold game pieces above the board
+            let boardContainer = document.createElement("div");
+            boardContainer.style.position = "relative";
+            boardContainer.style.display = "flex";
+            boardContainer.style.justifyContent = "center";
+            document.body.appendChild(boardContainer);
+
+            // Wrap each column image inside a clickable div
+            gameBoard.forEach((colImg, colIndex) => {
+                let columnWrapper = document.createElement("div");
+                columnWrapper.style.position = "relative";
+                columnWrapper.style.display = "inline-block";
+                columnWrapper.style.width = colImg.clientWidth + "px";
+                columnWrapper.style.height = colImg.clientHeight + "px";
+                columnWrapper.style.margin = "5px";
+
+                // Clone board image inside wrapper
+                let boardClone = colImg.cloneNode(true);
+                columnWrapper.appendChild(boardClone);
+
+                // Create a div to hold the falling pieces
+                let pieceContainer = document.createElement("div");
+                pieceContainer.style.position = "absolute";
+                pieceContainer.style.bottom = "0";
+                pieceContainer.style.width = "100%";
+                pieceContainer.style.height = "100%";
+                pieceContainer.style.display = "flex";
+                pieceContainer.style.flexDirection = "column-reverse"; // Ensures pieces stack correctly
+                columnWrapper.appendChild(pieceContainer);
+
+                // Click event to drop a piece in the correct column
+                columnWrapper.addEventListener("click", function () {
+                    dropPiece(colIndex, pieceContainer);
+                });
+
+                // Replace original image with the wrapper
+                colImg.replaceWith(columnWrapper);
+            });
+
+            function getLowestEmptyRow(col) {
+                for (let row = ROWS - 1; row >= 0; row--) {
+                    if (!board[row][col]) {
+                        return row;
+                    }
+                }
+                return -1; // Column is full
+            }
+
+            function dropPiece(col, pieceContainer) {
+                let row = getLowestEmptyRow(col);
+                if (row === -1) return; // Do nothing if column is full
+
+                // Update board state
+                board[row][col] = currentPlayer;
+
+                // Create piece element
+                let piece = document.createElement("img");
+                piece.src = currentPlayer === "player1" ? "icon/connect-4-player1.png" : "icon/connect-4-player2.png";
+                piece.style.width = "90%";
+                piece.style.margin = "auto";
+                piece.style.display = "block";
+
+                // Append piece to the container
+                pieceContainer.appendChild(piece);
+
+                // Switch players
+                currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
+            }
+        </script>
+
+
 
         <br>
 
