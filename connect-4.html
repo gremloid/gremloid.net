@@ -1,22 +1,17 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <Title>Connect 4</Title>
-        <style>
-            /* CSS for the navigation bar */
-            body {
-                background-color: #d2c4af;
-                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
-            }
-
-            .link {
-                color: #8b72be;
-                font-size: 20px;
-                margin-left: 10px;
-                font-weight: bold;
-            }
-
-            ul {
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connect 4</title>
+    <style>
+        body {
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
+            background-color: #d2c4af;
+        }
+        ul {
                 list-style-type: none;
                 margin: 0;
                 padding: 0;
@@ -28,280 +23,187 @@
                 padding-right: 16px; /* Matches the padding for alignment */
             }
 
-            li {
-                float: none; /* Remove float */
-            }
+        li {
+            float: none; /* Remove float */
+        }
 
-            .nav-links {
-                display: flex; /* Ensures items stay in a row */
-            }
+        .nav-links {
+            display: flex; /* Ensures items stay in a row */
+        }
 
-            .light {
-                margin-left: auto; /* Pushes the lightbulb to the right */
-            }
+        .light {
+            margin-left: auto; /* Pushes the lightbulb to the right */
+        }
 
-            .light img {
-                width: 24px;
-                height: auto;
-                cursor: pointer;
-            }
+        .light img {
+            width: 24px;
+            height: auto;
+            cursor: pointer;
+        }
 
-            li a {
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none
-            }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none
+        }
 
-            li a:hover {
-                background-color: #b7a9d4;
-            }
+        li a:hover {
+            background-color: #b7a9d4;
+        }
 
-            .active {
-                background-color: #f5f5dd;
-                color: black;
-            }
+        .active {
+            background-color: #f5f5dd;
+            color: black;
+        }
 
-            .light:hover {
-                cursor: pointer;
-            }
-            /* End of navigation bar CSS */
+        .light:hover {
+            cursor: pointer;
+        }
+        /* End of navigation bar CSS */
+        h1 { color: #333; }
 
-            /* Dark Mode CSS */
-            .dark-mode {
-                background-color: #1e104f;
-                color: white;
-            }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(7, 60px);
+            grid-template-rows: repeat(6, 60px);
+            gap: 5px;
+            background-color: #8b72be;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .cell {
+            width: 60px;
+            height: 60px;
+            background-color: #d2c4af;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        .cell.red { background-color: red; }
+        .cell.yellow { background-color: yellow; }
+        .message { margin-top: 20px; font-size: 20px; font-weight: bold; }
+        .reset { margin-top: 10px; padding: 10px; font-size: 16px; cursor: pointer; background-color: #8b72be; color: white;}
 
-            .dark-mode ul {
-                background-color: #7f6759;
-            }
-
-            .dark-mode li a {
-                color: black;
-            }
-
-            .dark-mode .active {
-                background-color: #493e63;
-                color: white;
-            }
-
-            .dark-mode li a:hover {
-                background-color: #48562b;
-            }
-
-            .dark-mode ::placeholder {
-                color: #7f6759;
-            }
-
-            .dark-mode input {
-                padding: 10px;
-                font-size: 16px;
-                border: 5px solid #7f6759;
-                border-radius: 10px;
-                width: 300px;
-            }
-
-            .dark-mode .link {
-                color: #7f6759;
-                font-size: 20px;
-                margin-left: 10px;
-            }
-            /* End Dark Mode CSS */
-
-            .connect-4 {
-                display: flex;
-                justify-content: center;
-            }
-
-            .connect-4 img{
-                margin-left: 5px;
-                margin-right: 5px;
-                width: 5%;
-            }
-
-            .connect-4 img:hover {
-                cursor: pointer;
-            }
-        </style>
-    </head>
-
-    <body>
-        <ul>
-            <div class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="projects.html">Projects</a></li>
-                <li><a href="music.html">Music</a></li>
-                <li><a href="editing.html">Editing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </div>
-            <li class="light"><img src="icon/lightbulb-on.png" id="bulb"></li>
-        </ul>
-        
-        <br>
-        <div>
-            <a class="link" href="projects.html">Back</a>
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <div class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="music.html">Music</a></li>
+            <li><a href="editing.html">Editing</a></li>
+            <li><a class="active" href="#">Contact</a></li>
         </div>
-        
-        <div class="connect-4">
-            <img id="c1" src="icon/connect-4-board.png">
-            <img id="c2" src="icon/connect-4-board.png">
-            <img id="c3" src="icon/connect-4-board.png">
-            <img id="c4" src="icon/connect-4-board.png">
-            <img id="c5" src="icon/connect-4-board.png">
-            <img id="c6" src="icon/connect-4-board.png">
-            <img id="c7" src="icon/connect-4-board.png">
-        </div>
+        <li class="light"><img src="icon/lightbulb-on.png" id="bulb"></li>
+    </ul>
+    <br>
+    
+    <div class="container">
+        <div class="board" id="board"></div>
+        <div class="message" id="message">Player 1's Turn (Red)</div>
+        <button class="reset" onclick="resetGame()">Reset Game</button>
+    </div>
+    
+    <script>
+        const ROWS = 6, COLS = 7;
+        let board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
+        let currentPlayer = 'red';
+        let gameOver = false;
 
-        <!-- Script for enabling and disabling dark mode -->
-        <script>
-            var lightbulb = document.getElementById("bulb");
-            var gameBoard = [document.getElementById("c1"), document.getElementById("c2"), document.getElementById("c3"), document.getElementById("c4"), document.getElementById("c5"), document.getElementById("c6"), document.getElementById("c7")];
-            
-            
-            // Function to update the lightbulb icon
-            function updateLightbulbIcon(isDarkMode) {
-                lightbulb.src = isDarkMode ? "icon/lightbulb-off.png" : "icon/lightbulb-on.png";
-            }
+        const boardElement = document.getElementById("board");
+        const messageElement = document.getElementById("message");
         
-            // Function to toggle dark mode
-            function toggleDarkMode() {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-        
-                // Toggle dark mode class
-                if (isDarkMode) {
-                    document.body.classList.remove("dark-mode");
-                    localStorage.setItem("dark-theme", "false");
-                    for(let i = 0; i < gameBoard.length; i++) {
-                        gameBoard[i].src = "icon/connect-4-board.png";
-                    }
-                } else {
-                    document.body.classList.add("dark-mode");
-                    localStorage.setItem("dark-theme", "true");
-                    for(let i = 0; i < gameBoard.length; i++) {
-                        gameBoard[i].src = "icon/connect-4-board-dark.png";
-                    }
+        function createBoard() {
+            boardElement.innerHTML = "";
+            for (let row = 0; row < ROWS; row++) {
+                for (let col = 0; col < COLS; col++) {
+                    const cell = document.createElement("div");
+                    cell.classList.add("cell");
+                    cell.dataset.row = row;
+                    cell.dataset.col = col;
+                    cell.addEventListener("click", () => dropPiece(col));
+                    boardElement.appendChild(cell);
                 }
-        
-                // Update the lightbulb icon based on the new mode
-                updateLightbulbIcon(!isDarkMode);
             }
-        
-            // Apply dark mode on page load
-            window.onload = function () {
-                const isDarkMode = localStorage.getItem("dark-theme") === "true";
-                if (isDarkMode) {
-                    document.body.classList.add("dark-mode");
-                    for(let i = 0; i < gameBoard.length; i++) {
-                        gameBoard[i].src = "icon/connect-4-board-dark.png";
+        }
+
+        function dropPiece(col) {
+            if (gameOver) return;
+            for (let row = ROWS - 1; row >= 0; row--) {
+                if (!board[row][col]) {
+                    board[row][col] = currentPlayer;
+                    updateBoard();
+                    if (checkWin(row, col)) {
+                        messageElement.textContent = `Player ${currentPlayer === 'red' ? 1 : 2} Wins!`;
+                        gameOver = true;
+                    } else {
+                        currentPlayer = currentPlayer === 'red' ? 'yellow' : 'red';
+                        messageElement.textContent = `Player ${currentPlayer === 'red' ? 1 : 2}'s Turn (${currentPlayer})`;
                     }
+                    return;
                 }
-                updateLightbulbIcon(isDarkMode);
-            };
-        
-            // Hover effect: Show what the lightbulb *will be* if clicked
-            lightbulb.addEventListener("mouseover", function () {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-                updateLightbulbIcon(!isDarkMode); // Show opposite state
-            });
-        
-            // Revert back to actual mode only if the image was not clicked
-            lightbulb.addEventListener("mouseout", function () {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-                updateLightbulbIcon(isDarkMode); // Restore original state
-            });
-        
-            // Click event listener to toggle dark mode
-            lightbulb.addEventListener("click", toggleDarkMode);
-        </script>
+            }
+        }
 
-        <script>
-            const ROWS = 6;
-            const COLS = 7;
-            let board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
-            let currentPlayer = "player1";
-
-            // Get all column images
-            let gameBoard = [
-                document.getElementById("c1"), document.getElementById("c2"), document.getElementById("c3"),
-                document.getElementById("c4"), document.getElementById("c5"), document.getElementById("c6"),
-                document.getElementById("c7")
-            ];
-
-            // Create a container to hold game pieces above the board
-            let boardContainer = document.createElement("div");
-            boardContainer.style.position = "relative";
-            boardContainer.style.display = "flex";
-            boardContainer.style.justifyContent = "center";
-            document.body.appendChild(boardContainer);
-
-            // Wrap each column image inside a clickable div
-            gameBoard.forEach((colImg, colIndex) => {
-                let columnWrapper = document.createElement("div");
-                columnWrapper.style.position = "relative";
-                columnWrapper.style.display = "inline-block";
-                columnWrapper.style.width = colImg.clientWidth + "px";
-                columnWrapper.style.height = colImg.clientHeight + "px";
-                columnWrapper.style.margin = "5px";
-
-                // Clone board image inside wrapper
-                let boardClone = colImg.cloneNode(true);
-                columnWrapper.appendChild(boardClone);
-
-                // Create a div to hold the falling pieces
-                let pieceContainer = document.createElement("div");
-                pieceContainer.style.position = "absolute";
-                pieceContainer.style.bottom = "0";
-                pieceContainer.style.width = "100%";
-                pieceContainer.style.height = "100%";
-                pieceContainer.style.display = "flex";
-                pieceContainer.style.flexDirection = "column-reverse"; // Ensures pieces stack correctly
-                columnWrapper.appendChild(pieceContainer);
-
-                // Click event to drop a piece in the correct column
-                columnWrapper.addEventListener("click", function () {
-                    dropPiece(colIndex, pieceContainer);
-                });
-
-                // Replace original image with the wrapper
-                colImg.replaceWith(columnWrapper);
-            });
-
-            function getLowestEmptyRow(col) {
-                for (let row = ROWS - 1; row >= 0; row--) {
-                    if (!board[row][col]) {
-                        return row;
-                    }
+        function updateBoard() {
+            document.querySelectorAll(".cell").forEach(cell => {
+                let row = cell.dataset.row;
+                let col = cell.dataset.col;
+                cell.classList.remove("red", "yellow");
+                if (board[row][col]) {
+                    cell.classList.add(board[row][col]);
                 }
-                return -1; // Column is full
+            });
+        }
+
+        function checkWin(row, col) {
+            return checkDirection(row, col, 1, 0) || // Vertical
+                   checkDirection(row, col, 0, 1) || // Horizontal
+                   checkDirection(row, col, 1, 1) || // Diagonal /
+                   checkDirection(row, col, 1, -1);  // Diagonal \
+        }
+
+        function checkDirection(row, col, rowDir, colDir) {
+            let count = 1;
+            count += countPieces(row, col, rowDir, colDir);
+            count += countPieces(row, col, -rowDir, -colDir);
+            return count >= 4;
+        }
+
+        function countPieces(row, col, rowDir, colDir) {
+            let count = 0;
+            let r = row + rowDir;
+            let c = col + colDir;
+            while (r >= 0 && r < ROWS && c >= 0 && c < COLS && board[r][c] === currentPlayer) {
+                count++;
+                r += rowDir;
+                c += colDir;
             }
+            return count;
+        }
 
-            function dropPiece(col, pieceContainer) {
-                let row = getLowestEmptyRow(col);
-                if (row === -1) return; // Do nothing if column is full
+        function resetGame() {
+            board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
+            currentPlayer = 'red';
+            gameOver = false;
+            messageElement.textContent = "Player 1's Turn (Red)";
+            updateBoard();
+        }
 
-                // Update board state
-                board[row][col] = currentPlayer;
-
-                // Create piece element
-                let piece = document.createElement("img");
-                piece.src = currentPlayer === "player1" ? "icon/connect-4-player1.png" : "icon/connect-4-player2.png";
-                piece.style.width = "90%";
-                piece.style.margin = "auto";
-                piece.style.display = "block";
-
-                // Append piece to the container
-                pieceContainer.appendChild(piece);
-
-                // Switch players
-                currentPlayer = currentPlayer === "player1" ? "player2" : "player1";
-            }
-        </script>
-
-
-
-        <br>
-
-    </body>
+        createBoard();
+    </script>
+</body>
 </html>
