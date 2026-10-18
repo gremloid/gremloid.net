@@ -2,121 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connect 4</title>
-    <style>
-        body {
-            flex-direction: column;
-            align-items: center;
-            font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
-            background-color: #d2c4af;
-        }
-        ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                background-color: #8b72be;
-                display: flex;
-                align-items: center;
-                justify-content: space-between; /* Ensures spacing between left items and right lightbulb */
-                padding-right: 16px; /* Matches the padding for alignment */
-            }
-
-        li {
-            float: none; /* Remove float */
-        }
-
-        .nav-links {
-            display: flex; /* Ensures items stay in a row */
-        }
-
-        .light {
-            margin-left: auto; /* Pushes the lightbulb to the right */
-        }
-
-        .light img {
-            width: 24px;
-            height: auto;
-            cursor: pointer;
-        }
-
-        li a {
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none
-        }
-
-        li a:hover {
-            background-color: #b7a9d4;
-        }
-
-        .active {
-            background-color: #f5f5dd;
-            color: black;
-        }
-
-        .light:hover {
-            cursor: pointer;
-        }
-        /* End of navigation bar CSS */
-        h1 { color: #333; }
-
-        .board {
-            display: grid;
-            grid-template-columns: repeat(7, 60px);
-            grid-template-rows: repeat(6, 60px);
-            gap: 5px;
-            background-color: #8b72be;
-            padding: 10px;
-            border-radius: 10px;
-        }
-        .cell {
-            width: 60px;
-            height: 60px;
-            background-color: #d2c4af;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        .cell.red { background-color: red; }
-        .cell.yellow { background-color: yellow; }
-        .message { margin-top: 20px; font-size: 20px; font-weight: bold; }
-        .reset { margin-top: 10px; padding: 10px; font-size: 16px; cursor: pointer; background-color: #8b72be; color: white;}
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            margin-top: 20px;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connect 4 — Avery Johnson</title>
+    <meta name="description" content="A two-player Connect 4 game written in plain JavaScript.">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap">
+    <link rel="stylesheet" href="css/style.css?v=4">
+    <script src="js/theme.js?v=2"></script>
 </head>
 <body>
-    <ul>
-        <div class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="music.html">Music</a></li>
-            <li><a href="editing.html">Editing</a></li>
-            <li><a class="active" href="#">Contact</a></li>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <nav class="nav container" aria-label="Main">
+            <a class="brand" href="index.html">Avery<span>.</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" aria-current="page">Projects</a></li>
+                <li><a href="music.html">Music</a></li>
+                <li><a href="editing.html">Editing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Dark mode" title="Switch to dark mode"><span class="theme-toggle-thumb"></span><svg class="theme-icon sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="theme-icon moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+            <button class="icon-button menu-toggle" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><span class="bars"></span></button>
+        </nav>
+    </header>
+
+    <main id="main">
+        <section class="page-header container">
+            <p class="eyebrow"><a href="projects.html">← Projects</a></p>
+            <h1>Connect 4</h1>
+            <p class="lead">Two players, one screen. Click a column to drop a piece. The first to connect four in a row wins.</p>
+        </section>
+
+        <div class="container game">
+            <p class="game-status" id="message" aria-live="polite"></p>
+            <div class="board" id="board"></div>
+            <button class="button" type="button" onclick="resetGame()">Reset game</button>
         </div>
-        <li class="light"><img src="icon/lightbulb-on.png" id="bulb"></li>
-    </ul>
-    <br>
-    
-    <div class="container">
-        <div class="board" id="board"></div>
-        <div class="message" id="message">Player 1's Turn (Red)</div>
-        <button class="reset" onclick="resetGame()">Reset Game</button>
-    </div>
-    
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>© <span id="year">2026</span> Avery Johnson</p>
+            <p><a href="mailto:contact@gremloid.net">contact@gremloid.net</a></p>
+        </div>
+    </footer>
+
     <script>
         const ROWS = 6, COLS = 7;
         let board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
@@ -125,7 +59,22 @@
 
         const boardElement = document.getElementById("board");
         const messageElement = document.getElementById("message");
-        
+
+        // Shows the status text with a colored chip for the current player
+        function setMessage(text, player) {
+            messageElement.innerHTML = '';
+            if (player) {
+                const chip = document.createElement('span');
+                chip.className = 'chip cell ' + player;
+                messageElement.appendChild(chip);
+            }
+            messageElement.appendChild(document.createTextNode(text));
+        }
+
+        function playerName(player) {
+            return player === 'red' ? 'Player 1' : 'Player 2';
+        }
+
         function createBoard() {
             boardElement.innerHTML = "";
             for (let row = 0; row < ROWS; row++) {
@@ -147,11 +96,14 @@
                     board[row][col] = currentPlayer;
                     updateBoard();
                     if (checkWin(row, col)) {
-                        messageElement.textContent = `Player ${currentPlayer === 'red' ? 1 : 2} Wins!`;
+                        setMessage(`${playerName(currentPlayer)} wins!`, currentPlayer);
+                        gameOver = true;
+                    } else if (board[0].every(cell => cell)) {
+                        setMessage("It's a draw!");
                         gameOver = true;
                     } else {
                         currentPlayer = currentPlayer === 'red' ? 'yellow' : 'red';
-                        messageElement.textContent = `Player ${currentPlayer === 'red' ? 1 : 2}'s Turn (${currentPlayer})`;
+                        setMessage(`${playerName(currentPlayer)}'s turn`, currentPlayer);
                     }
                     return;
                 }
@@ -159,7 +111,7 @@
         }
 
         function updateBoard() {
-            document.querySelectorAll(".cell").forEach(cell => {
+            document.querySelectorAll("#board .cell").forEach(cell => {
                 let row = cell.dataset.row;
                 let col = cell.dataset.col;
                 cell.classList.remove("red", "yellow");
@@ -199,11 +151,13 @@
             board = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
             currentPlayer = 'red';
             gameOver = false;
-            messageElement.textContent = "Player 1's Turn (Red)";
+            setMessage(`${playerName(currentPlayer)}'s turn`, currentPlayer);
             updateBoard();
         }
 
         createBoard();
+        resetGame();
     </script>
+    <script src="js/site.js?v=2"></script>
 </body>
 </html>

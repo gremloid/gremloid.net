@@ -1,333 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Music</title>
-        <style>
-            body {
-                background-color: #d2c4af;
-                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
-            }
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                background-color: #8b72be;
-                display: flex;
-                align-items: center;
-                justify-content: space-between; /* Ensures spacing between left items and right lightbulb */
-                padding-right: 16px; /* Matches the padding for alignment */
-            }
-
-            li {
-                float: none; /* Remove float */
-            }
-
-            .nav-links {
-                display: flex; /* Ensures items stay in a row */
-            }
-
-            .light {
-                margin-left: auto; /* Pushes the lightbulb to the right */
-            }
-
-            .light img {
-                width: 24px;
-                height: auto;
-                cursor: pointer;
-            }
-
-            li a {
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none
-            }
-
-            li a:hover {
-                background-color: #b7a9d4;
-            }
-
-            .active {
-                background-color: #f5f5dd;
-                color: black;
-            }
-
-            .light:hover {
-                cursor: pointer;
-            }
-            /* End of navigation bar CSS */
-
-            /* Dark Mode CSS */
-            .dark-mode {
-                background-color: #1e104f;
-                color: white;
-            }
-
-            .dark-mode ul {
-                background-color: #7f6759;
-            }
-
-            .dark-mode li a {
-                color: black;
-            }
-
-            .dark-mode .active {
-                background-color: #493e63;
-                color: white;
-            }
-
-            .dark-mode li a:hover {
-                background-color: #48562b;
-            }
-
-            .dark-mode button {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                background-color: #7f6759;
-                color: black;
-                border: none;
-                width: 70px;  /* Set a fixed square width */
-                height: 70px; /* Set the same height to make it square */
-                cursor: pointer;
-                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
-                font-size: 16px;
-                font-weight: normal;
-                border-radius: 5px; /* Optional: Add some border rounding */
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .dark-mode button:hover {
-                background-color: #48562b;
-            }
-            /* End Dark Mode CSS */
-
-            /* CSS to make images circular */
-            img {
-                border-radius: 50%;
-            }
-
-            /* CSS to center and handle placement of the image */
-            .center {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 20%;
-            }
-
-            .image-container {
-                position: relative;
-                width: 20%;
-                margin: 0 auto;
-                text-align: center;
-            }
-
-            #myImg {
-                display: block;
-                width: 100%;
-                border-radius: 50%;
-            }
-            /* End of image CSS */
-
-            /* CSS that makes the buttons square and positioned to the left and right of the images */
-            button {
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-                background-color: #8b72be;
-                color: white;
-                border: none;
-                width: 70px;  /* Set a fixed square width */
-                height: 70px; /* Set the same height to make it square */
-                cursor: pointer;
-                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
-                font-size: 16px;
-                font-weight: normal;
-                border-radius: 5px; /* Optional: Add some border rounding */
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            button:hover {
-                background-color: #b7a9d4;
-            }
-
-            #previous {
-                left: -80px;
-            }
-
-            #next {
-                right: -80px;
-            }
-            /* End of button CSS */
-
-            /* CSS to help with placement of the Spotify embed (courtesy of ChatGPT) */
-            .bio-spotify-container {
-                display: flex;
-                justify-content: space-between; /* Ensures they are evenly spaced */
-                align-items: center; /* Aligns them vertically */
-                width: 80%; /* Adjust width as needed */
-                margin: 20px auto; /* Centers the container */
-            }
-
-            /* CSS to help with the placement of text at the botton (also courtesy of ChatGPT) */
-            .half {
-                width: 48%; /* Ensures both sections take up equal space */
-            }
-        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Music — Avery Johnson</title>
+        <meta name="description" content="Bands Avery Johnson plays in around Las Cruces, New Mexico and El Paso, Texas.">
+        <link rel="icon" href="favicon.svg" type="image/svg+xml">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap">
+        <link rel="stylesheet" href="css/style.css?v=4">
+        <script src="js/theme.js?v=2"></script>
     </head>
 
     <body>
-        <!-- Navigation bar HTML -->
-        <ul>
-            <div class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a class="active" href="#">Music</a></li>
-                <li><a href="editing.html">Editing</a></li>
-                <li><a href="contact.html">Contact</a></li>
+        <a class="skip-link" href="#main">Skip to content</a>
+
+        <header class="site-header">
+            <nav class="nav container" aria-label="Main">
+                <a class="brand" href="index.html">Avery<span>.</span></a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="music.html" aria-current="page">Music</a></li>
+                    <li><a href="editing.html">Editing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Dark mode" title="Switch to dark mode"><span class="theme-toggle-thumb"></span><svg class="theme-icon sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="theme-icon moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+                <button class="icon-button menu-toggle" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><span class="bars"></span></button>
+            </nav>
+        </header>
+
+        <main id="main">
+            <section class="page-header container">
+                <p class="eyebrow">Music</p>
+                <h1>Bands I play in</h1>
+                <p class="lead">When I'm not writing code, I'm playing shows around Las Cruces, New Mexico and El Paso, Texas.</p>
+            </section>
+
+            <section class="section container" style="padding-top: 0">
+                <article class="card band">
+                    <img src="img/lighttube.jpg" width="350" height="350" alt="lighttube logcabin band photo">
+                    <div>
+                        <h2>lighttube logcabin</h2>
+                        <p class="role">Bass</p>
+                        <p>
+                            A DIY emo band from Las Cruces, New Mexico featuring Julian Castañeda on vocals and guitar,
+                            Avery Johnson on bass, and John Romero on drums. lighttube logcabin frequently plays shows
+                            around Las Cruces, New Mexico and El Paso, Texas.
+                        </p>
+                        <iframe title="lighttube logcabin on Spotify" src="https://open.spotify.com/embed/artist/3D95t7O5af6HWw2ZdbaoYw?utm_source=generator"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                </article>
+
+                <article class="card band">
+                    <img src="img/mia-antifa.png" width="486" height="486" alt="Mia Antifa band logo">
+                    <div>
+                        <h2>Mia Antifa</h2>
+                        <p class="role">Trumpet / Guitar</p>
+                        <p>
+                            A punk rock/ska punk band from El Paso, Texas that pushes against right wing beliefs in support of
+                            more social platforms. Members include Joshua "Shua" Zermeño on vocals and guitar, Jeremy "Jerm the Werm"
+                            Silva on guitar, Erik "The Dawg" Duran on bass, Mickey "Funky Mick" Valdez on drums, Sam Zermeño on
+                            trombone, and Avery Johnson on trumpet. Together, Sam and Avery make the "Hornies for Justice."
+                            Mia Antifa frequently plays shows around El Paso, Texas.
+                        </p>
+                        <iframe title="Mia Antifa on Spotify" src="https://open.spotify.com/embed/artist/6l7Sz7tuVOWP2108dKbE3C?utm_source=generator"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                </article>
+
+                <article class="card band">
+                    <img src="img/grs.jpg" width="350" height="350" alt="Gay Rat Society cover art">
+                    <div>
+                        <h2>Gay Rat Society</h2>
+                        <p class="role">Everything</p>
+                        <p>
+                            I can't be bothered to write a serious bio around this one. I'm honestly not sure if it's good for my
+                            digital footprint. lighttube logcabin still plays a full on punk rock version of God's Little Mistake sometimes.
+                        </p>
+                        <iframe title="Gay Rat Society on Spotify" src="https://open.spotify.com/embed/artist/4a9Q0xXGD5tYjujb491Vov?utm_source=generator"
+                            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                    </div>
+                </article>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>© <span id="year">2026</span> Avery Johnson</p>
+                <p><a href="mailto:contact@gremloid.net">contact@gremloid.net</a></p>
             </div>
-            <li class="light"><img src="icon/lightbulb-on.png" id="bulb"></li>
-        </ul>
+        </footer>
 
-        <!-- Script for enabling and disabling dark mode -->
-        <script>
-            var lightbulb = document.getElementById("bulb");
-        
-            // Function to update the lightbulb icon
-            function updateLightbulbIcon(isDarkMode) {
-                lightbulb.src = isDarkMode ? "icon/lightbulb-off.png" : "icon/lightbulb-on.png";
-            }
-        
-            // Function to toggle dark mode
-            function toggleDarkMode() {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-        
-                // Toggle dark mode class
-                if (isDarkMode) {
-                    document.body.classList.remove("dark-mode");
-                    localStorage.setItem("dark-theme", "false");
-                } else {
-                    document.body.classList.add("dark-mode");
-                    localStorage.setItem("dark-theme", "true");
-                }
-        
-                // Update the lightbulb icon based on the new mode
-                updateLightbulbIcon(!isDarkMode);
-            }
-        
-            // Apply dark mode on page load
-            window.onload = function () {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-                if (isDarkMode) {
-                    document.body.classList.add("dark-mode");
-                }
-                updateLightbulbIcon(isDarkMode);
-            };
-        
-            // Hover effect: Show what the lightbulb *will be* if clicked
-            lightbulb.addEventListener("mouseover", function () {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-                updateLightbulbIcon(!isDarkMode); // Show opposite state
-            });
-        
-            // Revert back to actual mode only if the image was not clicked
-            lightbulb.addEventListener("mouseout", function () {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-                updateLightbulbIcon(isDarkMode); // Restore original state
-            });
-        
-            // Click event listener to toggle dark mode
-            lightbulb.addEventListener("click", toggleDarkMode);
-        </script>
-
-        <br></br>
-
-        <!-- HTML to handle the buttons and the image in the center -->
-        <div class="image-container">
-            <button id="previous" class="float-left">Previous</button>
-            <img class="center" id="myImg" src="img/lighttube.jpg" alt="lighttube">
-            <button id="next" class="float-right">Next</button>
-        </div>
-
-        <!-- HTML for band name and instrument played -->
-        <h1 id="band-name" align="center">lighttube logcabin</h1>
-        <p id="instrument" align="center">Bass</p>
-
-        <!-- HTML for the creation of the bios and the spotify embeds-->
-        <div class="bio-spotify-container">
-            <div class="half" id="bio">
-                A DIY emo band from Las Cruces, New Mexico featuring Julian Castañeda on vocals and guitar, 
-                Violetta Garcia on guitar, Avery Johnson on bass, and Stephen Castañeda on drums.
-            </div>
-            <div class="half">
-                <iframe id="spotify" style="border-radius:12px" src="https://open.spotify.com/embed/artist/3D95t7O5af6HWw2ZdbaoYw?utm_source=generator" 
-                    width="100%" height="200" frameBorder="0" allowfullscreen=""
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy">
-                </iframe>
-            </div>
-        </div>
-        
-        <!-- Really gross script that makes almost every part of the page dynamic: the image, the bio, and the spotify embed.-->
-        <!-- I know that JavaScript wasn't part of the assignment, but I really wanted to pull off the look of this page specifically and couldn't without using JavaScript. I was going to have to do it anyway. -->
-        <!-- If I were to do it differently, I would create an UpdateContent() function instead of copying the same code twice. -->
-        <script>
-            const images = ['lighttube.jpg', 'mia-antifa.png', 'grs.jpg'];
-            const names = ['lighttube logcabin', 'Mia Antifa', 'Gay Rat Society']
-            const instruments = ['Bass', 'Trumpet/Guitar', 'Everything']
-            const bios = ['txt/lighttube.txt', 'txt/mia.txt', 'txt/grs.txt'];
-            const spotifies = ['https://open.spotify.com/embed/artist/3D95t7O5af6HWw2ZdbaoYw?utm_source=generator', 'https://open.spotify.com/embed/artist/6l7Sz7tuVOWP2108dKbE3C?utm_source=generator', 'https://open.spotify.com/embed/artist/4a9Q0xXGD5tYjujb491Vov?utm_source=generator'];
-            const nextButton = document.getElementById('next');
-            const previousButton = document.getElementById('previous');
-            const image = document.getElementById('myImg');
-            const name = document.getElementById('band-name');
-            const instrumentPlayed = document.getElementById('instrument');
-            const bioScanner = document.getElementById('bio');
-            const embeds = document.getElementById('spotify');
-            let i = 0;
-            nextButton.addEventListener('click', () => {
-                i++;
-                if (i >= images.length) {
-                    i = 0;
-                }
-                image.src='img/' + images[i];
-                name.innerHTML = names[i];
-                instrumentPlayed.innerHTML = instruments[i];
-                embeds.src = spotifies[i];
-                fetch(bios[i])
-                    .then(response => response.text())
-                    .then(text => {
-                        bioScanner.innerHTML = text;
-                    })
-                    .catch(error => {
-                        console.error("Error loading bio:", error);
-                        bioScanner.innerHTML = "Bio not available.";
-                    });
-            });
-            previousButton.addEventListener('click', () => {
-                i--;
-                if (i < 0) {
-                    i = images.length - 1;
-                }
-                image.src='img/' + images[i];
-                name.innerHTML = names[i];
-                instrumentPlayed.innerHTML = instrument[i];
-                embeds.src = spotifies[i];
-                fetch(bios[i])
-                    .then(response => response.text())
-                    .then(text => {
-                        bioScanner.innerHTML = text;
-                    })
-                    .catch(error => {
-                        console.error("Error loading bio:", error);
-                        bioScanner.innerHTML = "Bio not available.";
-                    });
-            });
-        </script>
+        <script src="js/site.js?v=2"></script>
     </body>
 </html>

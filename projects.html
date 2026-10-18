@@ -1,239 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-        <title>Projects</title>
-        <style>
-            /* CSS for the navigation bar */
-            body {
-                background-color: #d2c4af;
-                font-family: 'Avantgarde', 'TeX Gyre Adventor', 'URW Gothic L', sans-serif;
-            }
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                background-color: #8b72be;
-                display: flex;
-                align-items: center;
-                justify-content: space-between; /* Ensures spacing between left items and right lightbulb */
-                padding-right: 16px; /* Matches the padding for alignment */
-            }
-
-            li {
-                float: none; /* Remove float */
-            }
-
-            .nav-links {
-                display: flex; /* Ensures items stay in a row */
-            }
-
-            .light {
-                margin-left: auto; /* Pushes the lightbulb to the right */
-            }
-
-            .light img {
-                width: 24px;
-                height: auto;
-                cursor: pointer;
-            }
-
-            li a {
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none
-            }
-
-            li a:hover {
-                background-color: #b7a9d4;
-            }
-
-            .active {
-                background-color: #f5f5dd;
-                color: black;
-            }
-
-            .light:hover {
-                cursor: pointer;
-            }
-            /* End of navigation bar CSS */
-
-            /* Dark Mode CSS */
-            .dark-mode {
-                background-color: #1e104f;
-                color: white;
-            }
-
-            .dark-mode ul {
-                background-color: #7f6759;
-            }
-
-            .dark-mode li a {
-                color: black;
-            }
-
-            .dark-mode .active {
-                background-color: #493e63;
-                color: white;
-            }
-
-            .dark-mode li a:hover {
-                background-color: #48562b;
-            }
-
-            .dark-mode .projects a {
-                text-decoration: none;
-                color: #7f6759;
-                font-weight: bold;
-                display: block;
-            }
-            /* End Dark Mode CSS */
-
-            /* CSS to change link text decorations */
-            a {
-                text-decoration: none;
-                color: #8b72be;
-            }
-
-            /* CSS to center only the text of the webpage and position the image to the left (This was really annoying) */
-            .projects-container {
-                display: flex;
-                flex-direction: column; /* Stack items vertically */
-                align-items: center; /* Keep everything aligned */
-                width: 100%;
-                margin: 20px 0;
-            }
-
-            .projects {
-                display: flex;
-                align-items: center; /* Align image and text in a row */
-                gap: 0px; /* Space between image and text */
-                padding: 10px;
-                transition: transform 0.3s ease-in-out;
-                width: 250px; /* Set a reasonable width */
-            }
-
-            .projects:hover {
-                transform: scale(1.1);
-            }
-
-            /* Ensure images are placed to the left */
-            .projects img {
-                width: 60px; /* Adjust image size */
-                height: auto;
-                flex-shrink: 0; /* Prevent images from resizing */
-            }
-
-            /* Center only the text */
-            .projects h1 {
-                font-size: 18px;
-                text-align: center;
-                flex-grow: 1; /* Makes sure the text takes up space */
-                margin: 0;
-            }
-
-            .projects a {
-                text-decoration: none;
-                color: #8b72be;
-                font-weight: bold;
-                display: block;
-            }
-
-            /* End of project CSS */
-
-            .project-list li{
-                margin-top: 10px;
-            }
-
-
-        </style>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Projects — Avery Johnson</title>
+        <meta name="description" content="Games and software projects by Avery Johnson.">
+        <link rel="icon" href="favicon.svg" type="image/svg+xml">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap">
+        <link rel="stylesheet" href="css/style.css?v=4">
+        <script src="js/theme.js?v=2"></script>
     </head>
+
     <body>
-        <!-- Navigation bar CSS -->
-        <!-- Navigation bar HTML -->
-        <ul>
-            <div class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a class="active" href="#">Projects</a></li>
-                <li><a href="music.html">Music</a></li>
-                <li><a href="editing.html">Editing</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </div>
-            <li class="light"><img src="icon/lightbulb-on.png" id="bulb"></li>
-        </ul>
+        <a class="skip-link" href="#main">Skip to content</a>
 
-        <!-- HTML to display Bloody Unicorn-->
-        <div class="projects-container">
-            <div class="projects">
-                <img src="icon/bloodyUnicorn.png">
-                <h1><a href="bloodyUnicorn/index.html">Bloody Unicorn</a></h1>
-            </div>
-            <div class="projects">
-                <img id="connect" src="icon/connect-4.png">
-                <h1><a href="connect-4.html">Connect 4</a></h1>
-            </div>
-            <div class="projects">
-                <img src="icon/bug_icon.png">
-                <h1><a href="https://gremloid.github.io">In The Depths</a></h1>
-            </div>
-        </div>
+        <header class="site-header">
+            <nav class="nav container" aria-label="Main">
+                <a class="brand" href="index.html">Avery<span>.</span></a>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="projects.html" aria-current="page">Projects</a></li>
+                    <li><a href="music.html">Music</a></li>
+                    <li><a href="editing.html">Editing</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+                <button class="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Dark mode" title="Switch to dark mode"><span class="theme-toggle-thumb"></span><svg class="theme-icon sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg><svg class="theme-icon moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+                <button class="icon-button menu-toggle" type="button" aria-label="Menu" aria-controls="nav-links" aria-expanded="false"><span class="bars"></span></button>
+            </nav>
+        </header>
 
-        <!-- Script for enabling and disabling dark mode -->
-        <script>
-            var lightbulb = document.getElementById("bulb");
-            var connect4 = document.getElementById("connect");
-        
-            // Function to update the lightbulb icon
-            function updateLightbulbIcon(isDarkMode) {
-                lightbulb.src = isDarkMode ? "icon/lightbulb-off.png" : "icon/lightbulb-on.png";
-            }
-        
-            // Function to toggle dark mode
-            function toggleDarkMode() {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-        
-                // Toggle dark mode class
-                if (isDarkMode) {
-                    document.body.classList.remove("dark-mode");
-                    localStorage.setItem("dark-theme", "false");
-                    connect4.src = 'icon/connect-4.png';
-                } else {
-                    document.body.classList.add("dark-mode");
-                    localStorage.setItem("dark-theme", "true");
-                    connect4.src = 'icon/connect-4-dark.png';
-                }
-        
-                // Update the lightbulb icon based on the new mode
-                updateLightbulbIcon(!isDarkMode);
-            }
-        
-            // Apply dark mode on page load
-            window.onload = function () {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-                if (isDarkMode) {
-                    document.body.classList.add("dark-mode");
-                    connect4.src = 'icon/connect-4-dark.png';
-                }
-                updateLightbulbIcon(isDarkMode);
-            };
-        
-            // Hover effect: Show what the lightbulb *will be* if clicked
-            lightbulb.addEventListener("mouseover", function () {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-                updateLightbulbIcon(!isDarkMode); // Show opposite state
-            });
-        
-            // Revert back to actual mode only if the image was not clicked
-            lightbulb.addEventListener("mouseout", function () {
-                var isDarkMode = localStorage.getItem("dark-theme") === "true";
-                updateLightbulbIcon(isDarkMode); // Restore original state
-            });
-        
-            // Click event listener to toggle dark mode
-            lightbulb.addEventListener("click", toggleDarkMode);
-        </script>
+        <main id="main">
+            <section class="page-header container">
+                <p class="eyebrow">Projects</p>
+                <h1>Things I've built</h1>
+                <p class="lead">Games and small projects. All of them run right in your browser, so you can try them now.</p>
+            </section>
 
+            <section class="section container" style="padding-top: 0">
+                <div class="grid">
+                    <article class="card project-card">
+                        <div class="project-thumb"><img src="icon/bloodyUnicorn.png" alt=""></div>
+                        <div class="project-body">
+                            <h3>Bloody Unicorn</h3>
+                            <p>A game built in the Godot engine with GDScript, exported to WebAssembly so it plays in the browser without a download.</p>
+                            <ul class="tags">
+                                <li>Godot</li>
+                                <li>GDScript</li>
+                                <li>WebAssembly</li>
+                            </ul>
+                            <a class="button" href="bloodyUnicorn/index.html">Play Bloody Unicorn</a>
+                        </div>
+                    </article>
+
+                    <article class="card project-card">
+                        <div class="project-thumb"><svg class="thumb-art" viewBox="0 0 700 700" aria-hidden="true"><g fill="currentColor" stroke="currentColor"><circle cx="95" cy="95" r="56" fill="none" stroke-width="28"/><circle cx="265" cy="95" r="70"/><circle cx="435" cy="95" r="56" fill="none" stroke-width="28"/><circle cx="605" cy="95" r="56" fill="none" stroke-width="28"/><circle cx="95" cy="265" r="56" fill="none" stroke-width="28"/><circle cx="265" cy="265" r="70"/><circle cx="435" cy="265" r="56" fill="none" stroke-width="28"/><circle cx="605" cy="265" r="56" fill="none" stroke-width="28"/><circle cx="95" cy="435" r="56" fill="none" stroke-width="28"/><circle cx="265" cy="435" r="70"/><circle cx="435" cy="435" r="56" fill="none" stroke-width="28"/><circle cx="605" cy="435" r="56" fill="none" stroke-width="28"/><circle cx="95" cy="605" r="56" fill="none" stroke-width="28"/><circle cx="265" cy="605" r="70"/><circle cx="435" cy="605" r="56" fill="none" stroke-width="28"/><circle cx="605" cy="605" r="56" fill="none" stroke-width="28"/></g></svg></div>
+                        <div class="project-body">
+                            <h3>Connect 4</h3>
+                            <p>The classic two-player game, written from scratch. Pieces drop to the lowest open slot, and wins are checked across rows, columns, and both diagonals.</p>
+                            <ul class="tags">
+                                <li>JavaScript</li>
+                                <li>CSS Grid</li>
+                                <li>HTML</li>
+                            </ul>
+                            <a class="button" href="connect-4.html">Play Connect 4</a>
+                        </div>
+                    </article>
+
+                    <article class="card project-card">
+                        <div class="project-thumb"><img src="icon/bug_icon.png" alt=""></div>
+                        <div class="project-body">
+                            <h3>In The Depths</h3>
+                            <p>A canvas-based game hosted on GitHub Pages.</p>
+                            <ul class="tags">
+                                <li>Game</li>
+                                <li>Canvas</li>
+                            </ul>
+                            <a class="button" href="https://gremloid.github.io">Play In The Depths</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container">
+                <p>© <span id="year">2026</span> Avery Johnson</p>
+                <p><a href="mailto:contact@gremloid.net">contact@gremloid.net</a></p>
+            </div>
+        </footer>
+
+        <script src="js/site.js?v=2"></script>
     </body>
 </html>
