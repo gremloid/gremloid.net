@@ -586,3 +586,7 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* Inline SVG thumbnail art that follows the theme accent */
 .thumb-art { width: 38%; max-width: 140px; color: var(--accent); }
+
+/* Neutral badge (e.g. "Former" on the music page) */
+.badge.muted { background: var(--surface-2); color: var(--muted); border: 1px solid var(--border); }
+h2 .badge { font-size: .75rem; vertical-align: 6px; }
